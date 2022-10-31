@@ -13,8 +13,12 @@
         </li>
         <li role="presentation"
             routerLinkActive="active">
-          <a [routerLink]="users">Users</a>
+          <a [routerLink]="['users']">Users</a>
         </li>
+        <li role="presentation"
+        routerLinkActive="active">
+      <a [routerLink]="['auth']">Authenticate</a>
+    </li>
       </ul>
     </div>
   </div>

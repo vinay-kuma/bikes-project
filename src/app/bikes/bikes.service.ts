@@ -37,8 +37,8 @@ export class BikesService {
         }
       );
       if (bike) {
-        bike.name = bikeInfo.name;
-        bike.status = bikeInfo.status;
+        bike.name = bikeInfo.name!;
+        bike.status = bikeInfo.status!;
       }
     }
   }

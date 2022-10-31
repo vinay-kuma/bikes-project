@@ -8,7 +8,7 @@ import { Router, ActivatedRoute } from '@angular/router';
   styleUrls: ['./bikes.component.css']
 })
 export class BikesComponent implements OnInit {
-  private bikes: {id: number, name: string, status: string}[] = [];
+  private bikes?: {id: number, name: string, status: string}[] ;
 
   constructor(private bikesService: BikesService,
               private router: Router,
@@ -16,7 +16,7 @@ export class BikesComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.bikes = this.bikesService.getBikes();
+    this.bikes = this.bikesService.getBikes()!;
   }
 
   onReload(){}

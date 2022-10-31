@@ -11,10 +11,13 @@ import { UserComponent } from './users/user/user.component';
 import { EditBikeComponent } from './bikes/edit-bike/edit-bike.component';
 import { AppRoutingModule } from './app-routing.module';
 import { BikesService } from './bikes/bikes.service';
-import { BikeResolver } from './bikes/bike/bike-resolver.service';
+// import { BikeResolver } from './bikes/bike/bike-resolver.service';
 import { AuthService } from './auth.service';
 import { AuthGuard } from './auth-guard.service';
+import { CanDeactivateGuard } from './bikes/edit-bike/can-deactivate-guard.service';
 import { FormsModule } from '@angular/forms';
+import { ErrorPageComponent } from './error-page/error-page.component';
+// import { AuthComponent } from './auth/auth.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +27,9 @@ import { FormsModule } from '@angular/forms';
     UsersComponent,
     BikeComponent,
     UserComponent,
-    EditBikeComponent
+    EditBikeComponent,
+    ErrorPageComponent,
+    
   
   ],
   imports: [
@@ -33,7 +38,7 @@ import { FormsModule } from '@angular/forms';
     AppRoutingModule
 
   ],
-  providers: [BikesService, AuthService, AuthGuard, BikeResolver ],
+  providers: [BikesService, AuthService, AuthGuard, CanDeactivateGuard ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

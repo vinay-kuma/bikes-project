@@ -9,7 +9,7 @@ import { BikesService } from '../bikes.service';
   styleUrls: ['./bike.component.css']
 })
 export class BikeComponent implements OnInit {
-  Bike!: { id: number; name: string; status: string; };
+  bike?: { id: number; name: string; status: string; };
 
   constructor(private bikesService: BikesService,
               private route: ActivatedRoute,
@@ -20,7 +20,7 @@ export class BikeComponent implements OnInit {
     this.route.data
       .subscribe(
         (data: Data) => {
-          this.Bike = data['bike'];
+          this.bike = data['bike']!;
         }
       );
   }

@@ -3,14 +3,14 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 
 import { BikesService } from '../bikes.service';
-// import { CanComponentDeactivate } from './can-deactivate-guard.service';
+import { CanComponentDeactivate } from './can-deactivate-guard.service';
 
 @Component({
   selector: 'app-edit-bike',
   templateUrl: './edit-bike.component.html',
   styleUrls: ['./edit-bike.component.css']
 })
-export class EditBikeComponent implements OnInit {
+export class EditBikeComponent implements OnInit, CanComponentDeactivate {
   bike!: {id: number, name: string, status: string};
   bikeName = '';
   bikeStatus = '';
@@ -44,14 +44,14 @@ export class EditBikeComponent implements OnInit {
     this.router.navigate(['../'], {relativeTo: this.route});
   }
 
-  // canDeactivate(): Observable<boolean> | Promise<boolean> | boolean {
-  //   if (!this.allowEdit) {
-  //     return true;
-  //   }
-  //   if ((this.bikeName !== this.bike.name || this.bikeStatus !== this.bike.status) && !this.changesSaved) {
-  //     return confirm('Do you want to discard the changes?');
-  //   } else {
-  //     return true;
-  //   }
-  // }
+  canDeactivate(): Observable<boolean> | Promise<boolean> | boolean {
+    if (!this.allowEdit) {
+      return true;
+    }
+    if ((this.bikeName !== this.bike.name || this.bikeStatus !== this.bike.status) && !this.changesSaved) {
+      return confirm('Do you want to discard the changes?');
+    } else {
+      return true;
+    }
+  }
 }
